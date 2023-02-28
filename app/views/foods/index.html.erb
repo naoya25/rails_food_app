@@ -1,0 +1,20 @@
+<%# <%= button_to '食材登録', {controller: 'foods', action: 'read'} %>
+
+<h1>今日はこれだ</h1>
+
+<h2><%= @rand_food.food_name %></h2>
+
+<p><%= link_to 'もう一回', foods_index_path %></p>
+
+<h1>カロリー検索</h1>
+
+<%= form_tag({controller:"foods",action:"index"}, method: :get) do %>
+  <%= number_field_tag :calorie_search %>kcal <br>
+  <%= submit_tag '検索する'  %>
+<% end %>
+
+<div class="calories-result">
+  <% @near_calories.each do |food| %>
+    <h2><%= food.food_name %> <%= food.kcal %></h2>
+  <% end %>
+</div>
